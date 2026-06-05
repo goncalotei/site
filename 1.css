@@ -1,0 +1,15 @@
+.tl-asset {
+  margin-top: 1rem;
+  width: 100%;
+  height: 250px; /* Ajusta a altura conforme preferires */
+  background: var(--surface);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+  --poster-color: transparent;
+}
