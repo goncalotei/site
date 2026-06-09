@@ -9,10 +9,8 @@
 <meta property="og:type"        content="website">
 <meta property="og:title"       content="Gonçalo Teixeira — AI & Robotics">
 <meta property="og:description" content="Final-year ECE Master's student at IST specialising in Control, Robotics and AI. Researcher at ISR VISLab. Seeking a summer internship.">
-<meta property="og:image"       content="https://goncaloteixeira.dev/image.jpg">
+<meta property="og:image"       content="image.jpg">
 <meta property="og:url"         content="https://goncaloteixeira.dev">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,6 +46,7 @@
   h1 em { font-style: italic; color: var(--accent); }
   .hero-bio { font-size: 1rem; color: #a0aabb; max-width: 520px; margin-bottom: 2rem; opacity: 0; animation: fadeUp .7s ease forwards 1.0s; }
   .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp .7s ease forwards 1.0s; }
+  .hero-bio { font-size: 1rem; color: #a0aabb; max-width: 520px; margin-bottom: 2rem; opacity: 0; animation: fadeUp .7s ease forwards 1.0s; text-align: justify; }
   .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .65rem 1.4rem; border-radius: 6px; font-size: .9rem; font-weight: 500; text-decoration: none; transition: all .2s; }
   .btn-primary { background: var(--accent); color: #0d0f12; }
   .btn-primary:hover { background: #79b6fb; }
@@ -92,34 +91,99 @@
   .tl-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
   @media (max-width: 540px) { .tl-item { grid-template-columns: 1fr; gap: .4rem; } .tl-date { text-align: left; } }
 
+  /* ── OTHER EXPERIENCES ── */
   .other-exp-toggle {
-    display: flex; align-items: center; gap: .8rem; margin-top: 1rem; cursor: pointer;
-    user-select: none; border: none; background: none; padding: 0; color: var(--muted);
-    font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .14em;
-    text-transform: uppercase; transition: color .2s; width: 100%; text-align: left;
+    display: flex; align-items: center; gap: .8rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    user-select: none;
+    border: none; background: none; padding: 0;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    transition: color .2s;
+    width: 100%;
+    text-align: left;
   }
   .other-exp-toggle:hover { color: var(--text); }
   .other-exp-toggle::before { content: ''; flex: 1; height: 1px; background: var(--border); }
-  .other-exp-toggle::after  { content: ''; flex: 1; height: 1px; background: var(--border); }
-  .other-exp-chevron { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; flex-shrink: 0; transition: transform .25s ease; }
+  .other-exp-toggle::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .other-exp-chevron {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; flex-shrink: 0;
+    transition: transform .25s ease;
+  }
   .other-exp-chevron svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
   .other-exp-toggle.open .other-exp-chevron { transform: rotate(180deg); }
-  .other-exp-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; margin-top: 0; }
+
+  .other-exp-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .3s ease;
+    margin-top: 0;
+  }
   .other-exp-panel.open { grid-template-rows: 1fr; margin-top: .8rem; }
   .other-exp-inner { overflow: hidden; }
-  .other-exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; padding-bottom: .2rem; }
+
+  .other-exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .7rem;
+    padding-bottom: .2rem;
+  }
   @media (max-width: 540px) { .other-exp-grid { grid-template-columns: 1fr; } }
-  .oe-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: .9rem 1.1rem; transition: border-color .25s; }
+
+  .oe-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .9rem 1.1rem;
+    transition: border-color .25s;
+  }
   .oe-card:hover { border-color: rgba(79,156,249,.25); }
-  .oe-title { font-size: .88rem; font-weight: 500; color: var(--text); margin-bottom: .2rem; line-height: 1.3; }
-  .oe-org { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--muted); margin-bottom: .45rem; letter-spacing: .06em; }
-  .oe-desc { font-size: .82rem; color: #6e7f94; line-height: 1.55; }
-  .oe-cert { display: inline-flex; align-items: center; margin-top: .6rem; font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .08em; color: var(--accent); border: 1px solid rgba(79,156,249,.4); border-radius: 4px; padding: .2rem .6rem; background: rgba(79,156,249,.07); text-decoration: none; cursor: pointer; transition: background .2s, border-color .2s; }
+  .oe-title {
+    font-size: .88rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: .2rem;
+    line-height: 1.3;
+  }
+  .oe-org {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    color: var(--muted);
+    margin-bottom: .45rem;
+    letter-spacing: .06em;
+  }
+  .oe-desc {
+    font-size: .82rem;
+    color: #6e7f94;
+    line-height: 1.55;
+  }
+  .oe-cert {
+    display: inline-flex; align-items: center;
+    margin-top: .6rem;
+    font-family: 'DM Mono', monospace; font-size: .6rem;
+    letter-spacing: .08em; color: var(--accent);
+    border: 1px solid rgba(79,156,249,.4); border-radius: 4px;
+    padding: .2rem .6rem;
+    background: rgba(79,156,249,.07);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .2s, border-color .2s;
+    font-family: 'DM Mono', monospace;
+  }
   .oe-cert:hover { background: rgba(79,156,249,.16); border-color: rgba(79,156,249,.7); }
 
   .contact-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
   .contact-info { display: flex; flex-direction: column; gap: .6rem; }
-  .contact-item { display: inline-flex; align-items: center; gap: .7rem; font-size: .9rem; color: #a0aabb; text-decoration: none; transition: color .2s; }
+  .contact-item {
+    display: inline-flex; align-items: center; gap: .7rem;
+    font-size: .9rem; color: #a0aabb; text-decoration: none;
+    transition: color .2s;
+  }
   .contact-item:hover { color: var(--accent); }
   .contact-item svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--muted); transition: color .2s; }
   .contact-item:hover svg { color: var(--accent); }
@@ -134,9 +198,7 @@
   .model-placeholder { width: 100%; height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; color: var(--muted); font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .08em; border: 2px dashed var(--border); border-radius: 10px; background: #0a0c10; }
   .model-label { position: absolute; top: 8px; left: 10px; font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--muted); letter-spacing: .1em; pointer-events: none; z-index: 10; }
   .model-hint { position: absolute; bottom: 8px; right: 10px; font-family: 'DM Mono', monospace; font-size: .6rem; color: var(--muted); pointer-events: none; z-index: 10; opacity: .6; }
-  .model-loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(10,12,16,.85); font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--accent); z-index: 20; border-radius: 10px; gap: .5rem; flex-direction: column; }
-  .model-progress-bar { width: 120px; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; margin-top: .3rem; }
-  .model-progress-fill { height: 100%; background: var(--accent); border-radius: 2px; width: 0%; transition: width .1s linear; }
+  .model-loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(10,12,16,.85); font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--accent); z-index: 20; border-radius: 10px; gap: .5rem; }
   .spin { width: 14px; height: 14px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .7s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .ph-filename { font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--accent); margin-top: .3rem; }
@@ -207,43 +269,65 @@
   .cvc-fill { height: 100%; background: var(--accent); border-radius: 2px; width: 0%; }
   .cvc-time { font-family: 'DM Mono', monospace; font-size: .6rem; color: var(--muted); white-space: nowrap; }
 
+  /* Race YouTube link */
   .race-link { display: inline-flex; align-items: center; gap: .55rem; margin-top: .5rem; margin-bottom: .2rem; font-family: 'DM Mono', monospace; font-size: .78rem; letter-spacing: .04em; color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(79,156,249,.3); padding-bottom: 1px; transition: border-color .2s, color .2s; }
   .race-link:hover { color: #79b6fb; border-color: rgba(79,156,249,.7); }
   .race-link svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--accent); }
 
-  /* HAMBURGER */
-  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: .4rem; z-index: 101; -webkit-tap-highlight-color: transparent; }
-  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform .25s ease, opacity .25s ease; }
+  /* ── HAMBURGER ── */
+  .nav-hamburger {
+    display: none;
+    background: none; border: none; cursor: pointer; padding: .4rem;
+    z-index: 101; -webkit-tap-highlight-color: transparent;
+  }
   .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+  /* ── MOBILE ── */
   @media (max-width: 640px) {
     .nav-hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; }
-    .nav-links { position: fixed; top: 0; left: 0; right: 0; background: rgba(13,15,18,.97); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); flex-direction: column; align-items: center; gap: 0; padding: 4.5rem 0 1rem; transform: translateY(-100%); transition: transform .3s cubic-bezier(.22,1,.36,1); z-index: 98; }
+    .nav-links {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(13,15,18,.97); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border); flex-direction: column; align-items: center;
+      gap: 0; padding: 4.5rem 0 1rem;
+      transform: translateY(-100%); transition: transform .3s cubic-bezier(.22,1,.36,1); z-index: 98;
+    }
     .nav-links.open { transform: translateY(0); }
     .nav-links li { width: 100%; text-align: center; }
     .nav-links a { display: block; padding: .9rem 2rem; font-size: .95rem; color: var(--text); }
+
     section { padding: 3.5rem 1.2rem; }
     .section-inner { text-align: left; }
-    .edu-desc, .tl-desc { text-align: left; text-justify: auto; }
+    .edu-desc, .tl-desc, .oe-card { text-align: left; text-justify: auto; }
+
     #hero { padding: 5.5rem 1.2rem 3rem; }
     .hero-bio { font-size: .93rem; text-align: left; }
+
     .contact-row { flex-direction: column; align-items: flex-start; }
     .contact-row .btn { width: 100%; justify-content: center; }
+
     .edu-card { padding: 1.3rem; }
+    .ist-logo-row { flex-wrap: wrap; }
+
     .tl-item { grid-template-columns: 1fr; gap: .4rem; }
     .tl-date { text-align: left; font-size: .68rem; padding-top: 0; }
     .tl-date:empty { display: none; }
     .tl-body { padding-left: 1.3rem; }
-    #video-lightbox, #cert-lightbox, #cv-lightbox, #carousel-lightbox, #carousel-lightbox-psem { padding: 0; align-items: flex-end; }
+
+    #video-lightbox, #cert-lightbox, #cv-lightbox, #carousel-lightbox, #carousel-lightbox-psem {
+      padding: 0; align-items: flex-end;
+    }
     .lightbox-panel { border-radius: 14px 14px 0 0; max-width: 100%; width: 100%; }
     .lightbox-video-wrap { aspect-ratio: unset; height: 56vw; min-height: 200px; }
     .carousel-panel { border-radius: 14px 14px 0 0; max-width: 100%; width: 100%; }
     .carousel-stage { max-height: 56vw; min-height: 200px; }
     .carousel-vid-controls { opacity: 1; pointer-events: all; }
+
     .race-link { white-space: normal; flex-wrap: wrap; font-size: .72rem; }
     .tag { white-space: normal; word-break: break-word; }
+    .video-thumb[style*="21/6"] { aspect-ratio: 5/2; }
     .oe-card { padding: .75rem .9rem; }
     .other-exp-grid { grid-template-columns: 1fr; }
   }
@@ -282,7 +366,7 @@
     </div>
     <div class="hero-photo">
       <div class="photo-frame">
-        <img src="photo.jpeg" alt="Gonçalo Teixeira" fetchpriority="high">
+        <img src="photo.jpeg" alt="Gonçalo Teixeira">
         <span class="photo-badge">IST · Lisbon</span>
       </div>
     </div>
@@ -335,7 +419,7 @@
     <div class="edu-card">
       <div>
         <div style="display:flex; align-items:center; gap:.9rem; margin-bottom:.6rem;">
-          <img src="ist_logo.png" alt="IST logo" loading="lazy"
+          <img src="ist_logo.png" alt="IST logo"
                style="height:68px; width:auto; object-fit:contain; flex-shrink:0;">
           <p class="edu-school" style="margin-bottom:0;">INSTITUTO SUPERIOR TÉCNICO · UNIVERSIDADE DE LISBOA</p>
         </div>
@@ -428,7 +512,9 @@
               <canvas class="thumb-canvas" aria-hidden="true"></canvas>
               <div class="video-thumb-overlay"></div>
               <span class="video-thumb-label">Robotic Packing — Simulator</span>
-              <div class="play-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <div class="play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+              </div>
             </div>
             <div class="video-thumb" role="button" tabindex="0"
                  data-src="Robotic_Packing.mp4" data-title="Robotic Packing — Real Robot"
@@ -437,7 +523,9 @@
               <canvas class="thumb-canvas" aria-hidden="true"></canvas>
               <div class="video-thumb-overlay"></div>
               <span class="video-thumb-label">Robotic Packing — Real Robot</span>
-              <div class="play-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <div class="play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+              </div>
             </div>
           </div>
           <div class="model-viewer-wrap" data-model="baxter_final.glb">
@@ -470,8 +558,9 @@
           <p class="video-section-label">RoboThink Classes</p>
           <div class="video-row robothink-gallery">
             <div class="video-thumb" role="button" tabindex="0"
-                 onclick="openCarousel(0)" onkeydown="if(event.key==='Enter')openCarousel(0)"
-                 style="grid-column:1/-1;aspect-ratio:21/6;cursor:pointer;">
+                 onclick="openCarousel(0)"
+                 onkeydown="if(event.key==='Enter')openCarousel(0)"
+                 style="grid-column: 1 / -1; aspect-ratio: 21/6; cursor: pointer;">
               <div class="video-thumb-overlay"></div>
               <span class="video-thumb-label">RoboThink Classes</span>
               <div class="play-btn" aria-hidden="true" style="width:52px;height:52px;">
@@ -517,8 +606,9 @@
           </a>
           <div class="video-row" style="margin-top:.8rem;">
             <div class="video-thumb" role="button" tabindex="0"
-                 onclick="openCarouselPSEM(0)" onkeydown="if(event.key==='Enter')openCarouselPSEM(0)"
-                 style="grid-column:1/-1;aspect-ratio:21/6;cursor:pointer;">
+                 onclick="openCarouselPSEM(0)"
+                 onkeydown="if(event.key==='Enter')openCarouselPSEM(0)"
+                 style="grid-column: 1 / -1; aspect-ratio: 21/6; cursor: pointer;">
               <div class="video-thumb-overlay"></div>
               <span class="video-thumb-label">Galeria PSEM</span>
               <div class="play-btn" aria-hidden="true" style="width:52px;height:52px;">
@@ -541,41 +631,50 @@
         </div>
       </div>
 
+      <!-- ── OTHER EXPERIENCES & VOLUNTEER ── -->
       <div class="tl-item">
         <div class="tl-date"></div>
         <div class="tl-body">
-          <button class="other-exp-toggle" id="other-toggle" onclick="toggleOther()" aria-expanded="false">
-            Other experiences &amp; volunteer
-            <span class="other-exp-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
-          </button>
-          <div class="other-exp-panel" id="other-panel">
-            <div class="other-exp-inner">
-              <div class="other-exp-grid">
-                <div class="oe-card">
-                  <p class="oe-title">Partnerships Team — JEEC</p>
-                  <p class="oe-org">May 2022 – Mar 2023 · Electrical and Computer Engineering Journeys</p>
-                  <p class="oe-desc">Member of the partnerships team for IST's largest ECE job fair. Responsible for corporate outreach, B2B networking, and securing sponsorships and industry speakers for the 2023 edition.</p>
-                </div>
-                <div class="oe-card">
-                  <p class="oe-title">Regular Volunteer</p>
-                  <p class="oe-org">2010 – 2016 · Banco Alimentar Contra a Fome</p>
-                  <p class="oe-desc">Ongoing volunteering during my Scouts journey, contributing to food waste reduction and support for families in need.</p>
-                </div>
-                <div class="oe-card">
-                  <p class="oe-title">Volunteer — Euro 2024 Preparation</p>
-                  <p class="oe-org">Nov. 2023 · Federação Portuguesa de Futebol / IPDJ</p>
-                  <p class="oe-desc">Volunteered for the Portugal vs Scotland match as part of the UEFA Euro 2024 preparation campaign, organised through IPDJ.</p>
-                  <button class="oe-cert" onclick="openCert('certificates/euro2024_certificate.pdf')">Certificate</button>
-                </div>
-                <div class="oe-card">
-                  <p class="oe-title">Volunteer — Web Summit</p>
-                  <p class="oe-org">Nov. 2023 · Web Summit, Lisbon</p>
-                  <p class="oe-desc">Volunteered at one of the world's largest technology conferences, supporting event operations and attendee experience across multiple sessions.</p>
-                  <button class="oe-cert" onclick="openCert('certificates/websummit_certificate.pdf')">Certificate</button>
+            <button class="other-exp-toggle" id="other-toggle" onclick="toggleOther()" aria-expanded="false">
+              Other experiences &amp; volunteer
+              <span class="other-exp-chevron">
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </button>
+
+            <div class="other-exp-panel" id="other-panel">
+              <div class="other-exp-inner">
+                <div class="other-exp-grid">
+
+                  <div class="oe-card">
+                    <p class="oe-title">Partnerships Team — JEEC</p>
+                    <p class="oe-org">May 2022 – Mar 2023 · Electrical and Computer Engineering Journeys</p>
+                    <p class="oe-desc">Member of the partnerships team for IST's largest ECE job fair. Responsible for corporate outreach, B2B networking, and securing sponsorships and industry speakers for the 2023 edition.</p>
+                  </div>
+
+                  <div class="oe-card">
+                    <p class="oe-title">Regular Volunteer</p>
+                    <p class="oe-org">2010 – 2016 · Banco Alimentar Contra a Fome</p>
+                    <p class="oe-desc">Ongoing volunteering during my Scouts journey, contributing to food waste reduction and support for families in need.</p>
+                  </div>
+
+                  <div class="oe-card">
+                    <p class="oe-title">Volunteer — Euro 2024 Preparation</p>
+                    <p class="oe-org">Nov. 2023 · Federação Portuguesa de Futebol / IPDJ</p>
+                    <p class="oe-desc">Volunteered for the Portugal vs Scotland match as part of the UEFA Euro 2024 preparation campaign, organised through IPDJ.</p>
+                    <button class="oe-cert" onclick="openCert('certificates/euro2024_certificate.pdf')">Certificate</button>
+                  </div>
+
+                  <div class="oe-card">
+                    <p class="oe-title">Volunteer — Web Summit</p>
+                    <p class="oe-org">Nov. 2023 · Web Summit, Lisbon</p>
+                    <p class="oe-desc">Volunteered at one of the world's largest technology conferences, supporting event operations and attendee experience across multiple sessions.</p>
+                    <button class="oe-cert" onclick="openCert('certificates/websummit_certificate.pdf')">Certificate</button>
+                  </div>
+
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
 
@@ -615,19 +714,69 @@
 
 <footer>© 2026 Gonçalo Teixeira &nbsp;·&nbsp; IST · Lisbon, Portugal</footer>
 
-<!-- CV LIGHTBOX -->
+<!-- ── CV LIGHTBOX ── -->
 <div id="cv-lightbox" role="dialog" aria-modal="true" aria-label="Curriculum Vitae">
   <div class="lightbox-backdrop" onclick="closeCV()"></div>
   <div class="lightbox-panel" style="max-width:820px;">
     <div class="lightbox-header">
-      <div class="lightbox-meta"><span class="lightbox-dot"></span><span class="lightbox-title">Curriculum Vitae</span></div>
+      <div class="lightbox-meta">
+        <span class="lightbox-dot"></span>
+        <span class="lightbox-title">Curriculum Vitae</span>
+      </div>
       <div style="display:flex;align-items:center;gap:.6rem;">
-        <a class="btn btn-primary" href="CV_Goncalo-Teixeira.pdf" download="CV_Goncalo-Teixeira.pdf" style="padding:.4rem .9rem;font-size:.78rem;">↓ Download CV</a>
+        <a class="btn btn-primary" href="CV_Goncalo-Teixeira.pdf" download="CV_Goncalo-Teixeira.pdf"
+           style="padding:.4rem .9rem;font-size:.78rem;">↓ Download</a>
         <button class="lightbox-close" onclick="closeCV()" aria-label="Close">✕</button>
       </div>
     </div>
     <div style="width:100%;background:#0a0c10;min-height:500px;max-height:82vh;overflow:auto;">
-      <embed src="CV_Goncalo-Teixeira.pdf" type="application/pdf" style="width:100%;height:82vh;border:none;display:block;" id="cv-embed">
+      <embed src="CV_Goncalo-Teixeira.pdf" type="application/pdf"
+             style="width:100%;height:82vh;border:none;display:block;"
+             id="cv-embed">
+    </div>
+  </div>
+</div>
+
+<!-- ── CV LIGHTBOX ── -->
+<div id="cv-lightbox" role="dialog" aria-modal="true" aria-label="Curriculum Vitae">
+  <div class="lightbox-backdrop" onclick="closeCV()"></div>
+  <div class="lightbox-panel" style="max-width:820px;">
+    <div class="lightbox-header">
+      <div class="lightbox-meta">
+        <span class="lightbox-dot"></span>
+        <span class="lightbox-title">Curriculum Vitae</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.6rem;">
+        <a class="btn btn-primary" href="CV_Goncalo-Teixeira.pdf" download="CV_Goncalo-Teixeira.pdf"
+           style="padding:.4rem .9rem;font-size:.78rem;">↓ Download CV</a>
+        <button class="lightbox-close" onclick="closeCV()" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <div style="width:100%;background:#0a0c10;min-height:500px;max-height:82vh;overflow:auto;">
+      <embed src="CV_Goncalo-Teixeira.pdf" type="application/pdf"
+             style="width:100%;height:82vh;border:none;display:block;">
+    </div>
+  </div>
+</div>
+
+<!-- ── CV LIGHTBOX ── -->
+<div id="cv-lightbox" role="dialog" aria-modal="true" aria-label="Curriculum Vitae">
+  <div class="lightbox-backdrop" onclick="closeCV()"></div>
+  <div class="lightbox-panel" style="max-width:820px;">
+    <div class="lightbox-header">
+      <div class="lightbox-meta">
+        <span class="lightbox-dot"></span>
+        <span class="lightbox-title">Curriculum Vitae</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.6rem;">
+        <a class="btn btn-primary" href="CV_Goncalo-Teixeira.pdf" download="CV_Goncalo-Teixeira.pdf"
+           style="padding:.4rem .9rem;font-size:.78rem;">↓ Download CV</a>
+        <button class="lightbox-close" onclick="closeCV()" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <div style="width:100%;background:#0a0c10;min-height:500px;max-height:82vh;overflow:auto;">
+      <embed src="CV_Goncalo-Teixeira.pdf" type="application/pdf"
+             style="width:100%;height:82vh;border:none;display:block;">
     </div>
   </div>
 </div>
@@ -638,18 +787,19 @@
   <div class="carousel-panel">
     <div class="carousel-header">
       <div class="carousel-header-left">
-        <span class="carousel-dot"></span><span class="carousel-title">RoboThink</span>
+        <span class="carousel-dot"></span>
+        <span class="carousel-title">RoboThink</span>
         <span class="carousel-counter" id="carousel-counter">1 / 1</span>
       </div>
       <button class="carousel-close" onclick="closeCarousel()" aria-label="Fechar">✕</button>
     </div>
     <div class="carousel-stage" id="carousel-stage">
       <button class="carousel-arrow prev" onclick="carouselStep(-1)" aria-label="Anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-      <button class="carousel-arrow next" onclick="carouselStep(1)"  aria-label="Seguinte"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+      <button class="carousel-arrow next" onclick="carouselStep(1)" aria-label="Seguinte"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
       <div class="carousel-vid-controls" id="cvc" style="display:none;">
         <button class="cvc-btn" id="cvc-playpause" aria-label="Play/Pause">
           <svg id="cvc-icon-pause" viewBox="0 0 24 24"><line x1="10" y1="15" x2="10" y2="9"/><line x1="14" y1="15" x2="14" y2="9"/></svg>
-          <svg id="cvc-icon-play"  viewBox="0 0 24 24" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <svg id="cvc-icon-play" viewBox="0 0 24 24" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </button>
         <div class="cvc-progress" id="cvc-progress"><div class="cvc-fill" id="cvc-fill"></div></div>
         <span class="cvc-time" id="cvc-time">0:00</span>
@@ -665,18 +815,19 @@
   <div class="carousel-panel">
     <div class="carousel-header">
       <div class="carousel-header-left">
-        <span class="carousel-dot"></span><span class="carousel-title">PSEM</span>
+        <span class="carousel-dot"></span>
+        <span class="carousel-title">PSEM</span>
         <span class="carousel-counter" id="carousel-counter-psem">1 / 1</span>
       </div>
       <button class="carousel-close" onclick="closeCarouselPSEM()" aria-label="Fechar">✕</button>
     </div>
     <div class="carousel-stage" id="carousel-stage-psem">
       <button class="carousel-arrow prev" onclick="carouselStepPSEM(-1)" aria-label="Anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-      <button class="carousel-arrow next" onclick="carouselStepPSEM(1)"  aria-label="Seguinte"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+      <button class="carousel-arrow next" onclick="carouselStepPSEM(1)" aria-label="Seguinte"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
       <div class="carousel-vid-controls" id="cvc-psem" style="display:none;">
         <button class="cvc-btn" id="cvc-playpause-psem" aria-label="Play/Pause">
           <svg id="cvc-icon-pause-psem" viewBox="0 0 24 24"><line x1="10" y1="15" x2="10" y2="9"/><line x1="14" y1="15" x2="14" y2="9"/></svg>
-          <svg id="cvc-icon-play-psem"  viewBox="0 0 24 24" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <svg id="cvc-icon-play-psem" viewBox="0 0 24 24" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </button>
         <div class="cvc-progress" id="cvc-progress-psem"><div class="cvc-fill" id="cvc-fill-psem"></div></div>
         <span class="cvc-time" id="cvc-time-psem">0:00</span>
@@ -686,12 +837,15 @@
   </div>
 </div>
 
-<!-- CERTIFICATE LIGHTBOX -->
+<!-- ── CERTIFICATE LIGHTBOX ── -->
 <div id="cert-lightbox" role="dialog" aria-modal="true" aria-label="Certificate">
   <div class="lightbox-backdrop" onclick="closeCert()"></div>
   <div class="lightbox-panel" style="max-width:720px;">
     <div class="lightbox-header">
-      <div class="lightbox-meta"><span class="lightbox-dot"></span><span class="lightbox-title">Certificate</span></div>
+      <div class="lightbox-meta">
+        <span class="lightbox-dot"></span>
+        <span class="lightbox-title">Certificate</span>
+      </div>
       <button class="lightbox-close" onclick="closeCert()" aria-label="Close">✕</button>
     </div>
     <div id="cert-body" style="width:100%;background:#0a0c10;display:flex;align-items:center;justify-content:center;min-height:420px;max-height:78vh;overflow:auto;"></div>
@@ -703,7 +857,10 @@
   <div class="lightbox-backdrop" onclick="closeLightbox()"></div>
   <div class="lightbox-panel">
     <div class="lightbox-header">
-      <div class="lightbox-meta"><span class="lightbox-dot"></span><span class="lightbox-title" id="lightbox-title">Demo</span></div>
+      <div class="lightbox-meta">
+        <span class="lightbox-dot"></span>
+        <span class="lightbox-title" id="lightbox-title">Demo</span>
+      </div>
       <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close video">✕</button>
     </div>
     <div class="lightbox-video-wrap">
@@ -713,10 +870,13 @@
 </div>
 
 <script>
-  /* ── Typing ── */
+  /* Typing */
   const fullText = "Hi, I'm Gonçalo Teixeira.";
   const el = document.getElementById('typed');
   const cursor = document.getElementById('cursor');
+  const heading = document.getElementById('hero-heading');
+  const bio = document.getElementById('hero-bio');
+  const links = document.getElementById('hero-links');
   let i = 0;
   function type() {
     if (i < fullText.length) {
@@ -727,35 +887,36 @@
       setTimeout(() => {
         cursor.style.display = 'none';
         document.querySelector('.typing-line').style.display = 'none';
-        document.getElementById('hero-heading').style.display = 'block';
-        document.getElementById('hero-bio').style.display    = 'block';
-        document.getElementById('hero-links').style.display  = 'flex';
+        heading.style.display = 'block';
+        bio.style.display = 'block';
+        links.style.display = 'flex';
       }, 400);
     }
   }
   setTimeout(type, 600);
 
-  /* ── Timeline reveal ── */
-  const tlObs = new IntersectionObserver((entries) => {
+  /* Timeline scroll reveal */
+  const items = document.querySelectorAll('.tl-item');
+  const obs = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
         setTimeout(() => entry.target.classList.add('visible'), i * 90);
-        tlObs.unobserve(entry.target);
+        obs.unobserve(entry.target);
       }
     });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.tl-item').forEach(el => tlObs.observe(el));
+  items.forEach(el => obs.observe(el));
 
-  /* ── Other experiences toggle ── */
+  /* Other experiences toggle */
   function toggleOther() {
-    const btn   = document.getElementById('other-toggle');
+    const btn = document.getElementById('other-toggle');
     const panel = document.getElementById('other-panel');
-    const open  = panel.classList.toggle('open');
+    const open = panel.classList.toggle('open');
     btn.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', open);
   }
 
-  /* ── Video Lightbox ── */
+  /* Lightbox */
   const lightbox = document.getElementById('video-lightbox');
   const lbVideo  = document.getElementById('lightbox-video');
   const lbTitle  = document.getElementById('lightbox-title');
@@ -769,63 +930,30 @@
     document.body.style.overflow = '';
   }
 
-  /* ── CV Lightbox ── */
-  function openCV() { document.getElementById('cv-lightbox').classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closeCV() { document.getElementById('cv-lightbox').classList.remove('open'); document.body.style.overflow = ''; }
-
-  /* ── Certificate Lightbox ── */
-  function openCert(src) {
-    const lb = document.getElementById('cert-lightbox');
-    const body = document.getElementById('cert-body');
-    const ext = src.split('.').pop().toLowerCase();
-    body.innerHTML = '';
-    if (['jpg','jpeg','png','webp','gif'].includes(ext)) {
-      const img = document.createElement('img');
-      img.src = src; img.alt = 'Certificate';
-      img.style.cssText = 'max-width:100%;max-height:78vh;display:block;object-fit:contain;';
-      body.style.minHeight = 'unset'; body.appendChild(img);
-    } else {
-      body.style.minHeight = '78vh';
-      body.innerHTML = `<embed src="${src}" type="application/pdf" style="width:100%;height:78vh;border:none;display:block;" onerror="this.outerHTML=fallbackLink('${src}')">`;
-    }
-    lb.classList.add('open'); document.body.style.overflow = 'hidden';
-  }
-  function fallbackLink(src) {
-    return `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;font-family:'DM Mono',monospace;color:var(--muted);font-size:.8rem;">
-      <p>O browser bloqueou a pré-visualização do PDF.</p>
-      <a href="${src}" download style="color:var(--accent);text-decoration:none;border:1px solid rgba(79,156,249,.4);border-radius:6px;padding:.5rem 1rem;">↓ Descarregar certificado</a></div>`;
-  }
-  function closeCert() {
-    document.getElementById('cert-lightbox').classList.remove('open');
-    document.getElementById('cert-body').innerHTML = '';
-    document.body.style.overflow = '';
-  }
-
-  /* ── Carrossel helpers ── */
-  const IMAGE_EXTS = ['jpg','jpeg','png','gif','webp','avif','svg'];
-  const VIDEO_EXTS = ['mp4','webm','mov','ogg'];
-  function fileType(src) {
-    const ext = src.split('.').pop().toLowerCase();
-    return IMAGE_EXTS.includes(ext) ? 'image' : VIDEO_EXTS.includes(ext) ? 'video' : 'unknown';
-  }
-  function cvcFmt(s) { const m = Math.floor(s/60), sec = Math.floor(s%60); return m + ':' + String(sec).padStart(2,'0'); }
-
-  /* ── Carousel RoboThink ── */
+  /* Carousel RoboThink */
   const ROBOTHINK_FILES = [
     'Robothink/1.mp4','Robothink/2.mp4','Robothink/1.jpg','Robothink/2.jpg',
     'Robothink/3.jpg','Robothink/4.jpg','Robothink/5.jpg','Robothink/6.jpg',
     'Robothink/7.jpg','Robothink/8.jpg','Robothink/9.jpg','Robothink/10.jpg','Robothink/11.jpeg',
   ];
-  let carouselIndex = 0, carouselMediaEls = [], cvcVideo = null, cvcRaf = null;
+  const IMAGE_EXTS = ['jpg','jpeg','png','gif','webp','avif','svg'];
+  const VIDEO_EXTS = ['mp4','webm','mov','ogg'];
+  function fileType(src) {
+    const ext = src.split('.').pop().toLowerCase();
+    if (IMAGE_EXTS.includes(ext)) return 'image';
+    if (VIDEO_EXTS.includes(ext)) return 'video';
+    return 'unknown';
+  }
+  let carouselIndex = 0, carouselMediaEls = [];
   function buildCarousel() {
     const stage = document.getElementById('carousel-stage');
     const dotsEl = document.getElementById('carousel-dots');
     carouselMediaEls = [];
-    stage.querySelectorAll('.carousel-media').forEach(e => e.remove());
+    stage.querySelectorAll('.carousel-media').forEach(el => el.remove());
     dotsEl.innerHTML = '';
     ROBOTHINK_FILES.forEach((src, i) => {
       const type = fileType(src); let el;
-      if (type === 'video') { el = document.createElement('video'); el.playsInline = true; el.muted = true; el.loop = false; el.preload = 'none'; el.src = src; }
+      if (type === 'video') { el = document.createElement('video'); el.playsInline = true; el.muted = true; el.loop = false; el.preload = 'auto'; el.src = src; }
       else { el = document.createElement('img'); el.src = src; el.alt = 'RoboThink ' + (i+1); el.loading = 'lazy'; }
       el.className = 'carousel-media'; el.dataset.type = type;
       stage.insertBefore(el, stage.querySelector('.carousel-arrow.prev'));
@@ -838,58 +966,112 @@
   function carouselGoto(idx) {
     carouselMediaEls.forEach((el, i) => {
       el.classList.toggle('active', i === idx);
-      if (el.tagName === 'VIDEO') { i === idx ? (el.currentTime = 0, el.play().catch(()=>{})) : el.pause(); }
+      if (el.tagName === 'VIDEO') { if (i === idx) { el.currentTime = 0; el.play().catch(() => {}); } else { el.pause(); } }
     });
     document.querySelectorAll('#carousel-dots .carousel-pip').forEach((p, i) => p.classList.toggle('active', i === idx));
     carouselIndex = idx;
     document.getElementById('carousel-counter').textContent = (idx+1) + ' / ' + carouselMediaEls.length;
-    const av = carouselMediaEls[idx]; cvcAttach(av?.tagName === 'VIDEO' ? av : null);
+    const av = carouselMediaEls[idx]; cvcAttach(av && av.tagName === 'VIDEO' ? av : null);
   }
   function carouselStep(dir) { carouselGoto((carouselIndex + dir + carouselMediaEls.length) % carouselMediaEls.length); }
-  function openCarousel(startIndex) { buildCarousel(); carouselGoto(startIndex || 0); document.getElementById('carousel-lightbox').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function openCarousel(startIndex) {
+    buildCarousel(); carouselGoto(startIndex || 0);
+    document.getElementById('carousel-lightbox').classList.add('open'); document.body.style.overflow = 'hidden';
+  }
   function closeCarousel() {
     document.getElementById('carousel-lightbox').classList.remove('open');
     carouselMediaEls.forEach(el => { if (el.tagName === 'VIDEO') el.pause(); });
     cancelAnimationFrame(cvcRaf); cvcVideo = null;
     document.getElementById('cvc').style.display = 'none'; document.body.style.overflow = '';
   }
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('carousel-lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeCarousel();
+    if (e.key === 'ArrowLeft') carouselStep(-1);
+    if (e.key === 'ArrowRight') carouselStep(1);
+  });
+
+  /* Video controls */
+  let cvcVideo = null, cvcRaf = null;
+  function cvcFmt(s) { const m = Math.floor(s/60), sec = Math.floor(s%60); return m + ':' + String(sec).padStart(2,'0'); }
+  function cvcTick() {
+    if (!cvcVideo) return;
+    const pct = cvcVideo.duration ? (cvcVideo.currentTime / cvcVideo.duration * 100) : 0;
+    document.getElementById('cvc-fill').style.width = pct + '%';
+    document.getElementById('cvc-time').textContent = cvcFmt(cvcVideo.currentTime);
+    cvcRaf = requestAnimationFrame(cvcTick);
+  }
   function cvcAttach(vid) {
     cvcVideo = vid; cancelAnimationFrame(cvcRaf);
     const cvc = document.getElementById('cvc');
     if (!vid) { cvc.style.display = 'none'; return; }
     cvc.style.display = 'flex';
-    const syncIcons = () => {
+    function syncIcons() {
       document.getElementById('cvc-icon-pause').style.display = vid.paused ? 'none' : 'block';
       document.getElementById('cvc-icon-play').style.display  = vid.paused ? 'block' : 'none';
-    };
+    }
     vid.addEventListener('play', syncIcons); vid.addEventListener('pause', syncIcons); syncIcons();
-    const tick = () => {
-      const pct = vid.duration ? (vid.currentTime / vid.duration * 100) : 0;
-      document.getElementById('cvc-fill').style.width = pct + '%';
-      document.getElementById('cvc-time').textContent = cvcFmt(vid.currentTime);
-      cvcRaf = requestAnimationFrame(tick);
-    };
-    cvcRaf = requestAnimationFrame(tick);
+    cvcRaf = requestAnimationFrame(cvcTick);
   }
   document.getElementById('cvc-playpause').onclick = () => { if (!cvcVideo) return; cvcVideo.paused ? cvcVideo.play() : cvcVideo.pause(); };
   document.getElementById('cvc-progress').onclick = (e) => {
-    if (!cvcVideo?.duration) return;
+    if (!cvcVideo || !cvcVideo.duration) return;
     const rect = e.currentTarget.getBoundingClientRect();
     cvcVideo.currentTime = ((e.clientX - rect.left) / rect.width) * cvcVideo.duration;
   };
 
-  /* ── Carousel PSEM ── */
+  /* ── CV lightbox ── */
+  function openCV() {
+    document.getElementById('cv-lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCV() {
+    document.getElementById('cv-lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('cv-lightbox').classList.contains('open')) closeCV();
+  });
+
+
+  /* ── CV lightbox ── */
+  function openCV() {
+    document.getElementById('cv-lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCV() {
+    document.getElementById('cv-lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('cv-lightbox').classList.contains('open')) closeCV();
+  });
+
+
+  /* ── CV lightbox ── */
+  function openCV() {
+    document.getElementById('cv-lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCV() {
+    document.getElementById('cv-lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('cv-lightbox').classList.contains('open')) closeCV();
+  });
+  /* Carousel PSEM */
   const PSEM_FILES = ['PSEM/1.jpg','PSEM/1.mp4','PSEM/2.mp4','PSEM/2.jpg','PSEM/3.jpeg','PSEM/4.jpg','PSEM/5.jpg'];
   let carouselIndexPSEM = 0, carouselMediaElsPSEM = [], cvcVideoPSEM = null, cvcRafPSEM = null;
   function buildCarouselPSEM() {
     const stage = document.getElementById('carousel-stage-psem');
     const dotsEl = document.getElementById('carousel-dots-psem');
     carouselMediaElsPSEM = [];
-    stage.querySelectorAll('.carousel-media').forEach(e => e.remove());
+    stage.querySelectorAll('.carousel-media').forEach(el => el.remove());
     dotsEl.innerHTML = '';
     PSEM_FILES.forEach((src, i) => {
       const type = fileType(src); let el;
-      if (type === 'video') { el = document.createElement('video'); el.playsInline = true; el.muted = true; el.loop = false; el.preload = 'none'; el.src = src; }
+      if (type === 'video') { el = document.createElement('video'); el.playsInline = true; el.muted = true; el.loop = false; el.preload = 'auto'; el.src = src; }
       else { el = document.createElement('img'); el.src = src; el.alt = 'PSEM ' + (i+1); el.loading = 'lazy'; }
       el.className = 'carousel-media'; el.dataset.type = type;
       stage.insertBefore(el, stage.querySelector('.carousel-arrow.prev'));
@@ -902,15 +1084,18 @@
   function carouselGotoPSEM(idx) {
     carouselMediaElsPSEM.forEach((el, i) => {
       el.classList.toggle('active', i === idx);
-      if (el.tagName === 'VIDEO') { i === idx ? (el.currentTime = 0, el.play().catch(()=>{})) : el.pause(); }
+      if (el.tagName === 'VIDEO') { if (i === idx) { el.currentTime = 0; el.play().catch(() => {}); } else { el.pause(); } }
     });
     document.querySelectorAll('#carousel-dots-psem .carousel-pip').forEach((p, i) => p.classList.toggle('active', i === idx));
     carouselIndexPSEM = idx;
     document.getElementById('carousel-counter-psem').textContent = (idx+1) + ' / ' + carouselMediaElsPSEM.length;
-    const av = carouselMediaElsPSEM[idx]; cvcAttachPSEM(av?.tagName === 'VIDEO' ? av : null);
+    const av = carouselMediaElsPSEM[idx]; cvcAttachPSEM(av && av.tagName === 'VIDEO' ? av : null);
   }
   function carouselStepPSEM(dir) { carouselGotoPSEM((carouselIndexPSEM + dir + carouselMediaElsPSEM.length) % carouselMediaElsPSEM.length); }
-  function openCarouselPSEM(startIndex) { buildCarouselPSEM(); carouselGotoPSEM(startIndex || 0); document.getElementById('carousel-lightbox-psem').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function openCarouselPSEM(startIndex) {
+    buildCarouselPSEM(); carouselGotoPSEM(startIndex || 0);
+    document.getElementById('carousel-lightbox-psem').classList.add('open'); document.body.style.overflow = 'hidden';
+  }
   function closeCarouselPSEM() {
     document.getElementById('carousel-lightbox-psem').classList.remove('open');
     carouselMediaElsPSEM.forEach(el => { if (el.tagName === 'VIDEO') el.pause(); });
@@ -922,39 +1107,106 @@
     const cvc = document.getElementById('cvc-psem');
     if (!vid) { cvc.style.display = 'none'; return; }
     cvc.style.display = 'flex';
-    const syncPSEM = () => {
+    function syncPSEM() {
       document.getElementById('cvc-icon-pause-psem').style.display = vid.paused ? 'none' : 'block';
       document.getElementById('cvc-icon-play-psem').style.display  = vid.paused ? 'block' : 'none';
-    };
+    }
     vid.addEventListener('play', syncPSEM); vid.addEventListener('pause', syncPSEM); syncPSEM();
-    const tickPSEM = () => {
+    function tickPSEM() {
       const pct = vid.duration ? (vid.currentTime / vid.duration * 100) : 0;
       document.getElementById('cvc-fill-psem').style.width = pct + '%';
       document.getElementById('cvc-time-psem').textContent = cvcFmt(vid.currentTime);
       cvcRafPSEM = requestAnimationFrame(tickPSEM);
-    };
+    }
     cvcRafPSEM = requestAnimationFrame(tickPSEM);
   }
   document.getElementById('cvc-playpause-psem').onclick = () => { if (!cvcVideoPSEM) return; cvcVideoPSEM.paused ? cvcVideoPSEM.play() : cvcVideoPSEM.pause(); };
   document.getElementById('cvc-progress-psem').onclick = (e) => {
-    if (!cvcVideoPSEM?.duration) return;
+    if (!cvcVideoPSEM || !cvcVideoPSEM.duration) return;
     const rect = e.currentTarget.getBoundingClientRect();
     cvcVideoPSEM.currentTime = ((e.clientX - rect.left) / rect.width) * cvcVideoPSEM.duration;
   };
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('carousel-lightbox-psem').classList.contains('open')) return;
+    if (e.key === 'Escape') closeCarouselPSEM();
+    if (e.key === 'ArrowLeft') carouselStepPSEM(-1);
+    if (e.key === 'ArrowRight') carouselStepPSEM(1);
+  });
 
-  /* ── Hamburger ── */
+  /* Escape for video lightbox */
+
+  /* ── Certificate lightbox ── */
+  function openCert(src) {
+    const lb   = document.getElementById('cert-lightbox');
+    const body = document.getElementById('cert-body');
+    const ext  = src.split('.').pop().toLowerCase();
+    body.innerHTML = '';
+
+    if (['jpg','jpeg','png','webp','gif'].includes(ext)) {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Certificate';
+      img.style.cssText = 'max-width:100%;max-height:78vh;display:block;object-fit:contain;';
+      body.style.minHeight = 'unset';
+      body.appendChild(img);
+    } else {
+      // PDF: use <embed> which works in all modern browsers when served over HTTP
+      body.style.minHeight = '78vh';
+      body.innerHTML = `
+        <embed src="${src}" type="application/pdf"
+               style="width:100%;height:78vh;border:none;display:block;"
+               onerror="this.outerHTML=fallbackLink('${src}')">
+        <p style="display:none;" id="cert-fallback"></p>
+      `;
+    }
+
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function fallbackLink(src) {
+    return `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:1rem;padding:2rem;font-family:'DM Mono',monospace;color:var(--muted);font-size:.8rem;">
+      <p>O browser bloqueou a pré-visualização do PDF.</p>
+      <a href="${src}" download style="color:var(--accent);text-decoration:none;
+        border:1px solid rgba(79,156,249,.4);border-radius:6px;padding:.5rem 1rem;">
+        ↓ Descarregar certificado
+      </a></div>`;
+  }
+
+  function closeCert() {
+    document.getElementById('cert-lightbox').classList.remove('open');
+    document.getElementById('cert-body').innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('cert-lightbox').classList.contains('open')) closeCert();
+  });
+
+
+  /* Hamburger nav */
   const hamburger = document.getElementById('nav-hamburger');
   const navLinks  = document.getElementById('nav-links');
-  hamburger.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open', open);
-    hamburger.setAttribute('aria-expanded', open);
-  });
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    navLinks.classList.remove('open'); hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', false);
-  }));
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    // Close on link click
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+  }
 
-  /* ── First-frame thumbnails on hover ── */
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  /* First-frame on hover */
   document.querySelectorAll('.video-thumb[data-src]').forEach(thumb => {
     const src = thumb.dataset.src;
     const cvs = thumb.querySelector('.thumb-canvas');
@@ -974,25 +1226,6 @@
       vid.src = src;
     });
   });
-
-  /* ── Keyboard shortcuts (único bloco) ── */
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      if (document.getElementById('video-lightbox').classList.contains('open'))          closeLightbox();
-      if (document.getElementById('cv-lightbox').classList.contains('open'))             closeCV();
-      if (document.getElementById('cert-lightbox').classList.contains('open'))           closeCert();
-      if (document.getElementById('carousel-lightbox').classList.contains('open'))       closeCarousel();
-      if (document.getElementById('carousel-lightbox-psem').classList.contains('open'))  closeCarouselPSEM();
-    }
-    if (document.getElementById('carousel-lightbox').classList.contains('open')) {
-      if (e.key === 'ArrowLeft')  carouselStep(-1);
-      if (e.key === 'ArrowRight') carouselStep(1);
-    }
-    if (document.getElementById('carousel-lightbox-psem').classList.contains('open')) {
-      if (e.key === 'ArrowLeft')  carouselStepPSEM(-1);
-      if (e.key === 'ArrowRight') carouselStepPSEM(1);
-    }
-  });
 </script>
 
 <script type="importmap">
@@ -1006,183 +1239,95 @@
 
 <script type="module">
 import * as THREE from 'three';
-import { GLTFLoader }      from 'three/addons/loaders/GLTFLoader.js';
-import { DRACOLoader }     from 'three/addons/loaders/DRACOLoader.js';
-import { MeshoptDecoder }  from 'three/addons/libs/meshopt_decoder.module.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const H = 220;
-
-/* Loaders partilhados (instanciados uma única vez) */
-const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/draco/');
-const loader = new GLTFLoader();
-loader.setDRACOLoader(dracoLoader);
-loader.setMeshoptDecoder(MeshoptDecoder);
-
-/* Mapa de renderers activos: wrap → { renderer, animActive } */
-const activeRenderers = new Map();
-
-/* Pausa/retoma todos os loops quando a aba fica invisível */
-document.addEventListener('visibilitychange', () => {
-  activeRenderers.forEach(state => { state.tabHidden = document.hidden; });
-});
-
-/* IntersectionObserver — inicia o viewer ao aproximar-se do viewport */
-const viewerObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    const wrap = entry.target;
-    if (entry.isIntersecting) {
-      /* Carrega o modelo apenas uma vez */
-      if (!wrap.dataset.loaded) {
-        wrap.dataset.loaded = '1';
-        viewerObs.unobserve(wrap);
-        initViewer(wrap, wrap.getAttribute('data-model'));
-      }
-    }
-    /* Pausa o render quando fora do ecrã, retoma quando voltou */
-    const state = activeRenderers.get(wrap);
-    if (state) state.visible = entry.isIntersecting;
-  });
-}, { rootMargin: '200px' });
-
 document.querySelectorAll('.model-viewer-wrap[data-model]').forEach(wrap => {
-  viewerObs.observe(wrap);
+  const filename = wrap.getAttribute('data-model');
+  if (filename) initViewer(wrap, filename);
 });
 
 function initViewer(wrap, url) {
   const ph = wrap.querySelector('.model-placeholder');
-  if (ph) ph.style.display = 'none';
-
-  /* Loading overlay com barra de progresso */
   const loadingEl = document.createElement('div');
   loadingEl.className = 'model-loading';
-  loadingEl.innerHTML = `
-    <div style="display:flex;align-items:center;gap:.5rem;">
-      <div class="spin"></div>
-      <span>Loading…</span>
-    </div>
-    <div class="model-progress-bar">
-      <div class="model-progress-fill" id="prog-${url.replace(/\W/g,'_')}"></div>
-    </div>`;
+  loadingEl.innerHTML = '<div class="spin"></div>&nbsp;Loading…';
   wrap.appendChild(loadingEl);
-
   const canvas = document.createElement('canvas');
   canvas.className = 'model-canvas';
   wrap.insertBefore(canvas, loadingEl);
-
+  if (ph) ph.style.display = 'none';
   const hint = wrap.querySelector('.model-hint');
   const W = wrap.clientWidth || 400;
-
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  /* 1.5 em vez de 2 — menos píxeis, visualmente idêntico, render ~44% mais rápido */
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(W, H);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.2;
-
-  const scene  = new THREE.Scene();
+  const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, W / H, 0.001, 2000);
-
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment()).texture;
   pmrem.dispose();
-
   scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-  const dir  = new THREE.DirectionalLight(0xffffff, 1.0); dir.position.set(5, 8, 5);   scene.add(dir);
+  const dir = new THREE.DirectionalLight(0xffffff, 1.0); dir.position.set(5, 8, 5); scene.add(dir);
   const fill = new THREE.DirectionalLight(0x4f9cf9, 0.2); fill.position.set(-5, 2, -5); scene.add(fill);
-
-  const progFill = loadingEl.querySelector('.model-progress-fill');
-
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/draco/');
+  const loader = new GLTFLoader();
+  loader.setDRACOLoader(dracoLoader);
+  loader.setMeshoptDecoder(MeshoptDecoder);
   loader.load(url, gltf => {
     loadingEl.remove();
     if (hint) hint.style.display = 'block';
-
-    const model = gltf.scene;
-    scene.add(model);
-
-    const box    = new THREE.Box3().setFromObject(model);
+    const model = gltf.scene; scene.add(model);
+    const box = new THREE.Box3().setFromObject(model);
     const center = box.getCenter(new THREE.Vector3());
-    const size   = box.getSize(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
     const maxDim = Math.max(size.x, size.y, size.z) || 1;
-    const scale  = 2.2 / maxDim;
-
+    const scale = 2.2 / maxDim;
     model.scale.setScalar(scale);
     model.position.copy(center.multiplyScalar(-scale));
     model.position.y += 0.05;
-
-    const camDist = maxDim * scale * (url.includes('GP23') ? 1.3 : 2.0);
-    camera.position.set(0, size.y * scale * 0.4, camDist);
+    const camDist = maxDim * scale * (url.indexOf('GP23') !== -1 ? 1.3 : 2.0);
+    const baseY = size.y * scale * 0.4;
+    camera.position.set(0, baseY, camDist);
     camera.lookAt(0, size.y * scale * 0.2, 0);
-
     let rotY = 0, rotX = 0, dragging = false, prevX = 0, prevY = 0;
     let autoRotate = true, idleTimer = null;
-    const state = { visible: true, tabHidden: false };
-    activeRenderers.set(wrap, state);
-
-    function resetIdle() {
-      autoRotate = false;
-      clearTimeout(idleTimer);
-      idleTimer = setTimeout(() => { autoRotate = true; }, 3000);
-    }
-
+    function resetIdle() { autoRotate = false; clearTimeout(idleTimer); idleTimer = setTimeout(() => { autoRotate = true; }, 3000); }
     canvas.addEventListener('mousedown', e => { dragging = true; prevX = e.clientX; prevY = e.clientY; resetIdle(); });
-    window.addEventListener('mouseup',   () => { dragging = false; });
+    window.addEventListener('mouseup', () => { dragging = false; });
     window.addEventListener('mousemove', e => {
       if (!dragging) return;
-      rotY += (e.clientX - prevX) * 0.008;
-      rotX += (e.clientY - prevY) * 0.005;
-      rotX  = Math.max(-Math.PI/3, Math.min(Math.PI/3, rotX));
+      rotY += (e.clientX - prevX) * 0.008; rotX += (e.clientY - prevY) * 0.005;
+      rotX = Math.max(-Math.PI/3, Math.min(Math.PI/3, rotX));
       prevX = e.clientX; prevY = e.clientY;
     });
-    canvas.addEventListener('touchstart', e => {
-      resetIdle();
-      if (e.touches.length === 1) { prevX = e.touches[0].clientX; prevY = e.touches[0].clientY; }
-      e.preventDefault();
-    }, { passive: false });
+    canvas.addEventListener('touchstart', e => { resetIdle(); if (e.touches.length === 1) { prevX = e.touches[0].clientX; prevY = e.touches[0].clientY; } e.preventDefault(); }, { passive: false });
     canvas.addEventListener('touchmove', e => {
       if (e.touches.length === 1) {
-        rotY += (e.touches[0].clientX - prevX) * 0.008;
-        rotX += (e.touches[0].clientY - prevY) * 0.005;
-        rotX  = Math.max(-Math.PI/3, Math.min(Math.PI/3, rotX));
+        rotY += (e.touches[0].clientX - prevX) * 0.008; rotX += (e.touches[0].clientY - prevY) * 0.005;
+        rotX = Math.max(-Math.PI/3, Math.min(Math.PI/3, rotX));
         prevX = e.touches[0].clientX; prevY = e.touches[0].clientY;
       }
       e.preventDefault();
     }, { passive: false });
-
-    /* IntersectionObserver para pausar o render loop quando fora do ecrã */
-    const renderObs = new IntersectionObserver(entries => {
-      state.visible = entries[0].isIntersecting;
-    }, { threshold: 0 });
-    renderObs.observe(canvas);
-
     (function animate() {
       requestAnimationFrame(animate);
-      /* Salta o render se invisível ou aba escondida */
-      if (!state.visible || state.tabHidden) return;
       if (autoRotate) rotY += 0.004;
-      model.rotation.y = rotY;
-      model.rotation.x = rotX;
+      model.rotation.y = rotY; model.rotation.x = rotX;
       renderer.render(scene, camera);
     })();
-
     new ResizeObserver(() => {
-      const w = canvas.clientWidth;
-      if (w < 10) return;
-      renderer.setSize(w, H);
-      camera.aspect = w / H;
-      camera.updateProjectionMatrix();
+      const w = canvas.clientWidth; if (w < 10) return;
+      renderer.setSize(w, H); camera.aspect = w / H; camera.updateProjectionMatrix();
     }).observe(canvas);
-
-  },
-  /* Progresso do download */
-  xhr => {
-    if (xhr.total && progFill) {
-      progFill.style.width = (xhr.loaded / xhr.total * 100) + '%';
-    }
-  },
-  err => {
+  }, undefined, err => {
     loadingEl.innerHTML = `⚠ Não foi possível carregar <strong>${url}</strong> — coloque o ficheiro na mesma pasta do index.html`;
     loadingEl.style.cssText = 'font-size:.7rem;padding:1rem;text-align:center;color:#6b7280;';
     console.error('GLTFLoader error:', err);
