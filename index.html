@@ -236,11 +236,12 @@
     .tl-date { text-align: left; font-size: .68rem; padding-top: 0; }
     .tl-date:empty { display: none; }
     .tl-body { padding-left: 1.3rem; }
-    #video-lightbox, #cert-lightbox, #cv-lightbox, #carousel-lightbox, #carousel-lightbox-psem { padding: 0; align-items: flex-end; }
-    .lightbox-panel { border-radius: 14px 14px 0 0; max-width: 100%; width: 100%; }
-    .lightbox-video-wrap { aspect-ratio: unset; height: 56vw; min-height: 200px; }
-    .carousel-panel { border-radius: 14px 14px 0 0; max-width: 100%; width: 100%; }
-    .carousel-stage { max-height: 56vw; min-height: 200px; }
+    #video-lightbox, #cert-lightbox, #cv-lightbox { padding: 0; align-items: center; }
+    #carousel-lightbox, #carousel-lightbox-psem { padding: 0; align-items: center; }
+    .lightbox-panel { border-radius: 14px; max-width: 100%; width: 100%; max-height: 90vh; }
+    .lightbox-video-wrap { aspect-ratio: unset; height: 56vw; min-height: 200px; max-height: 70vh; }
+    .carousel-panel { border-radius: 14px; max-width: 100%; width: 100%; max-height: 90vh; }
+    .carousel-stage { max-height: 70vh; min-height: 200px; }
     .carousel-vid-controls { opacity: 1; pointer-events: all; }
     .race-link { white-space: normal; flex-wrap: wrap; font-size: .72rem; }
     .tag { white-space: normal; word-break: break-word; }
